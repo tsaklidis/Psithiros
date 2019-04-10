@@ -1,0 +1,5 @@
+*.pyc
+*.log
+*.sublime-project
+*.sublime-workspace
+shy/settings/local.py
