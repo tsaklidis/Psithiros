@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block page_title %}Κείμενο{% endblock %}
+{% block site_css %}
+    <link href="{{ static('shy/css/public/post.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block extra_head %}{% endblock%}
+{% block meta_description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+
+{% block main %}
+<div class="container-fluid text-center">
+	<br>
+	<div class="row">
+		<div class="col-lg-12">
+		<div class="btn btn-info answer" data-toggle="collapse" data-target="#answr_wrp">Γράψε μια απάντηση</div>
+		<div id="answr_wrp" class="collapse">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4 post">
+			<div class="post_wrp">
+				<div class="post_head">
+					<span class="title">
+						<h2>{{post.title}}</h2>.
+					</span>
+					<span class="date">{{post.created_on.strftime('%d-%h-%Y')}}</span>
+				</div>
+				<div class="the_text">{{post.text}}</div>
+				
+			</div>
+		</div>
+	</div>
+
+</div>
+{% endblock %}
+{% block site_js %}{% endblock %}

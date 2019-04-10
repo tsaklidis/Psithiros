@@ -1,0 +1,73 @@
+<html lang="el" itemscope itemtype="http://schema.org/WebPage">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Μίλα | {% block page_title %}{% endblock %}</title>
+        <meta name="author" content="Stefanos i. Tsaklidis">
+        <meta name="description" content="{% block meta_description %}{% endblock %}">
+        <meta name="keywords" content="{% block keywords %}{% endblock %}">
+
+        <link href="{{ static('shy/css/libs/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400&amp;subset=greek" rel="stylesheet"> 
+        <link href="{{ static('shy/css/base.css') }}" rel="stylesheet" type="text/css">
+
+
+        {% block site_css %}{% endblock %}
+        {% block extra_head %}{% endblock%}
+
+
+
+    </head>
+
+    <body class="d-flex flex-column h-100">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Γ-Ρ-Α</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample04">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Αρχική <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Γράψε</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Διάβασε</a>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li> -->
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="flex-shrink-0">
+            {% block main %}{% endblock %}
+        </main>
+
+        <footer class="footer mt-auto py-3">
+            <div class="container">
+                <p class="footer-text text-center">All Rights Reserved &copy;
+                <a href="https://tsaklidis.gr" title="Developer: Stefanos I. Tsaklidis">Developed by Stefanos I. Tsaklidis</a>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+        {% block site_js %}{% endblock %}
+    </body>
+
+
+</html>
