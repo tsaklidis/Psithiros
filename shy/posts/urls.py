@@ -7,4 +7,7 @@ urlpatterns = [
 
     # Signel post
     url('^post/(?P<uuid>[\w.@+-]+)/$', views.single_post, name='single_post'),
+
+    # New post
+    url('^new/$', views.new_post, name='new_post'),
 ]

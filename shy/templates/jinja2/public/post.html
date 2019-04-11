@@ -12,31 +12,86 @@
 {% block main %}
 <div class="container-fluid text-center">
 	<br>
+
 	<div class="row">
-		<div class="col-lg-12">
-		<div class="btn btn-info answer" data-toggle="collapse" data-target="#answr_wrp">Γράψε μια απάντηση</div>
-		<div id="answr_wrp" class="collapse">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-4 post">
+		<div class="col-md-7 post">
 			<div class="post_wrp">
-				<div class="post_head">
+				<div class="post_head ">
 					<span class="title">
-						<h2>{{post.title}}</h2>.
+						<h2>{{post.title}}.</h2>
 					</span>
-					<span class="date">{{post.created_on.strftime('%d-%h-%Y')}}</span>
 				</div>
 				<div class="the_text">{{post.text}}</div>
-				
+				<div class="post_foot">
+					<span>Κλείδί: </span><span class="badge badge badge-danger">{{post.uuid}}</span>
+					<span class="date badge badge badge-primary">{{post.created_on.strftime('%d/%m/%Y')}} | Απ:{{post.all_answers('count')}}</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-5">
+			<div id="give_answr_wrp">
+				<form action="{{ url('posts:single_post', args=[post.uuid]) }}" method="POST">
+					<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" id='csrf'>
+					<p>Γράψε μια απάντηση</p>
+
+					<div class="form-group">
+					    {{ ans_form.title}}
+					    {% if ans_form.title.errors%}
+						    <div class="alert alert-danger">
+						        {{ans_form.title.errors}}
+						    </div>
+					    {% endif %}
+					</div> 
+
+					<div class="form-group">
+					    {{ ans_form.text}}
+					    {% if ans_form.text.errors%}
+						    <div class="alert alert-danger">
+						        {{ans_form.text.errors}}
+						    </div>
+					    {% endif %}
+					</div> 
+
+					{% if status %}
+						<div class="alert alert-success">Ή απάντηση αποθηκεύτηκε</div>
+					{% endif %}
+
+
+					{# <div class="form-group text-left">
+						<textarea class="form-control" rows="3" id="comment" name="text"></textarea>
+					</div> #}
+					<i>Η απάντηση δεν μπορεί να σβηστεί ή να αλλάξει.</i><br>
+					<button type="submit" class="btn btn-primary">Αποθήκευση</button>
+				</form>
 			</div>
 		</div>
 	</div>
 
+	{% for ans in post.all_answers() %}
+		<div class="row">
+			<div class="col-md-5">
+				<div class="ans_wrp" id="{{post.uuid}}">
+					<div class="post_head ">
+						<span class="title">
+							<h2>{{ans.title}}.</h2>
+						</span>
+						<span class="date ">{{ans.created_on.strftime('%d/%m/%Y %H:%M:%S')}}</span>
+					</div>
+					<div class="the_text">{{ans.text}}</div>
+					<div class="post_foot">
+						<span>Κλείδί:</span> <span class="badge badge-danger">{{ans.uuid}}</span>
+					</div>
+				</div>
+			</div>
+		</div>		
+	{% endfor %}
+
 </div>
 {% endblock %}
-{% block site_js %}{% endblock %}
+{% block site_js %}
+
+<script type="text/javascript">
+
+</script>
+
+{% endblock %}

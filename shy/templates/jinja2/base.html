@@ -4,7 +4,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Μίλα | {% block page_title %}{% endblock %}</title>
+        <title>Ψίθυρος | {% block page_title %}{% endblock %}</title>
         <meta name="author" content="Stefanos i. Tsaklidis">
         <meta name="description" content="{% block meta_description %}{% endblock %}">
         <meta name="keywords" content="{% block keywords %}{% endblock %}">
@@ -23,7 +23,7 @@
 
     <body class="d-flex flex-column h-100">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Γ-Ρ-Α</a>
+            <a class="navbar-brand" href="/">Ψ</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -34,10 +34,10 @@
                         <a class="nav-link" href="/">Αρχική <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Γράψε</a>
+                        <a class="nav-link" href="{{ url('posts:new_post') }}">Γράψε</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Διάβασε</a>
+                        <a class="nav-link" href="#">Πληροφορίες</a>
                     </li>
                     <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>

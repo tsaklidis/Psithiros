@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block page_title %}Νέος ψίθυρος{% endblock %}
+{% block site_css %}
+    <link href="{{ static('shy/css/public/new_post.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block extra_head %}{% endblock%}
+{% block meta_description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+
+{% block main %}
+<div class="container text-center">
+	<br>
+
+	<div class="row">
+
+		<div class="col-md-12 new_post">
+			<p class="alert alert-primary text-left">
+				O Ψίθυρος δεν αποθηκεύει κανένα δεδομένο που μπορεί να σε σχετίσει με το κείμενο που θα γράψεις.
+				<br>
+				Δεν ζητάμε <u>κανένα</u> στοιχείο όπως όνομα, email, ip, ανάλυση οθόνης, λειτουργικό ή κάτι άλλο... Το κείμενο είναι ανώνυμο 100%. Δεν βάζουμε cookies.
+				<br>
+				Το μόνο στοιχείο που σχετίζεται είναι το "κλειδί" που θα βρεις στο κάτω μέρος μόλις αποθηκεύσεις το κείμενο. <br>
+				Το κλειδί είναι <b>μόνο</b> για να μπορείς να βρείς το κείμενο στο μέλλον. 
+			</p>
+			<form action="{{ url('posts:new_post') }}" method="POST">
+				<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" id='csrf'>
+
+				<div class="form-group">
+				    {{ post_form.title}}
+				    {% if post_form.title.errors%}
+					    <div class="alert alert-danger">
+					        {{post_form.title.errors}}
+					    </div>
+				    {% endif %}
+				</div> 
+
+				<div class="form-group">
+				    {{ post_form.text}}
+				    {% if post_form.text.errors%}
+					    <div class="alert alert-danger">
+					        {{post_form.text.errors}}
+					    </div>
+				    {% endif %}
+				</div> 
+
+				{% if status %}
+					<div class="alert alert-success">Το κείμενο αποθηκεύτηκε</div>
+				{% endif %}
+
+
+				{# <div class="form-group text-left">
+					<textarea class="form-control" rows="3" id="comment" name="text"></textarea>
+				</div> #}
+				<i>Το κείμενο δεν μπορεί να σβηστεί ή να αλλάξει.</i><br>
+				<button type="submit" class="btn btn-primary">Αποθήκευση</button>
+			</form>
+		</div>
+
+			
+	</div>
+
+
+
+</div>
+{% endblock %}
+{% block site_js %}
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#id_text').attr('rows', '7');
+});
+</script>
+
+{% endblock %}

@@ -15,8 +15,8 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<br>
-			<h4>Γράψε / Ρώτα / Απάντα </h4>
-			<h4 id="anon">- 100% ανώνυμα! -</h4>
+			<h4>Γράψε / Ρώτα / Απάντα</h4>
+			<h4 id="anon">Μίλα στον Ψίθυρο για όποιο θέμα θέλεις 100% ανώνυμα!</h4>
 			<br>
 		</div>
 	</div>
@@ -25,12 +25,15 @@
 		{% for post in posts %}
 			<div class="col-md-4 post">
 				<div class="post_wrp">
-					<div class="post_head">
-						<span class="title"><h2>{{post.title[:40]}}</h2>.</span><span class="uuid">{{post.uuid}}</span>
+					<div class="post_head ">
+						<span class="title">
+							<h2>{{post.title[:20]}}.</h2>
+						</span>
+						<span class="date badge badge-success">Απ:{{post.all_answers('count')}}</span>
+						<span class="date badge badge-primary">{{post.created_on.strftime('%d/%m/%Y')}}</span>
 					</div>
 					<div class="the_text">{{post.text[:300]}}...</div>
-					{# <span class="date">{{post.created_on.strftime('%d-%h-%Y')}}</span> #}
-					<a class="btn btn-success show" href="{{ url('posts:single_post', args=[post.uuid]) }}">Προβολή</a>
+					<a class="btn btn-primary btn-sm show" href="{{ url('posts:single_post', args=[post.uuid]) }}">Προβολή</a>
 				</div>
 			</div>
 			
