@@ -78,12 +78,7 @@ def new_post(request):
 @require_POST
 def search(request):
     value = _clean_search_post(request.POST.get('search_term'))
-    if value:
-        # try:
-        #     post = Post.objects.get(uuid=value)
-        #     return redirect('posts:single_post', post.uuid)
-        # except Post.DoesNotExist:
-        #     posts = Post.objects.filter(text__icontains=value)
+    if value and len(value) > 2:
 
         if Post.objects.filter(uuid=value).exists():
             post = Post.objects.get(uuid=value)
@@ -93,11 +88,6 @@ def search(request):
             return redirect('posts:single_post', ans.parent.uuid)
 
         posts = Post.objects.filter(text__icontains=value)
-        # try:
-        #     ans = Answers.objects.get(uuid=value)
-        #     return redirect('posts:single_post', ans.post.uuid)
-        # except Answers.DoesNotExist:
-        #     posts = Post.objects.filter(text__icontains=value)
 
         data = {
             "posts": posts
@@ -106,6 +96,6 @@ def search(request):
         return render(request, 'public/search_results.html', data)
     else:
         data = {
-            "posts": ''
+            "posts": '',
         }
         return render(request, 'public/search_results.html', data)
