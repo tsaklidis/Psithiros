@@ -6,7 +6,7 @@ urlpatterns = [
     url('^$', views.home, name='home'),
 
     # Signel post
-    url('^post/(?P<uuid>[\w.@+-]+)/$', views.single_post, name='single_post'),
+    url('^whisper/(?P<uuid>[\w.@+-]+)/$', views.single_post, name='single_post'),
 
     # search for posts
     url('^search/$', views.search, name='search'),
@@ -15,5 +15,5 @@ urlpatterns = [
     url('^info/$', views.info, name='info'),
 
     # New post
-    url('^new/$', views.new_post, name='new_post'),
+    url('^new/whisper/$', views.new_post, name='new_post'),
 ]

@@ -4,7 +4,7 @@ from django.views.decorators.http import require_POST
 import re
 import shy.posts.forms as forms
 
-from shy.posts.models import Post
+from shy.posts.models import Post, Answers
 
 
 def _clean_search_post(data):
@@ -79,11 +79,25 @@ def new_post(request):
 def search(request):
     value = _clean_search_post(request.POST.get('search_term'))
     if value:
-        try:
+        # try:
+        #     post = Post.objects.get(uuid=value)
+        #     return redirect('posts:single_post', post.uuid)
+        # except Post.DoesNotExist:
+        #     posts = Post.objects.filter(text__icontains=value)
+
+        if Post.objects.filter(uuid=value).exists():
             post = Post.objects.get(uuid=value)
             return redirect('posts:single_post', post.uuid)
-        except Post.DoesNotExist:
-            posts = Post.objects.filter(text__icontains=value)
+        if Answers.objects.filter(uuid=value).exists():
+            ans = Answers.objects.get(uuid=value)
+            return redirect('posts:single_post', ans.parent.uuid)
+
+        posts = Post.objects.filter(text__icontains=value)
+        # try:
+        #     ans = Answers.objects.get(uuid=value)
+        #     return redirect('posts:single_post', ans.post.uuid)
+        # except Answers.DoesNotExist:
+        #     posts = Post.objects.filter(text__icontains=value)
 
         data = {
             "posts": posts

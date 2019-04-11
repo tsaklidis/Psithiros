@@ -17,13 +17,15 @@
 
 		<div class="col-md-12 new_post">
 			<p class="alert alert-primary text-left">
-				O Ψίθυρος δεν αποθηκεύει κανένα δεδομένο που μπορεί να σε σχετίσει με το κείμενο που θα γράψεις.
+				- O Ψίθυρος δεν αποθηκεύει κανένα δεδομένο που μπορεί να σε σχετίσει με το κείμενο που θα γράψεις.
 				<br>
-				Δεν αποθηκεύουμε <u>κανένα</u> στοιχείο όπως όνομα, email, ip, ανάλυση οθόνης, λειτουργικό ή κάτι άλλο... Το κείμενο είναι ανώνυμο 100%.
+				- Δεν αποθηκεύουμε <u>κανένα</u> στοιχείο όπως όνομα, email, ip, ανάλυση οθόνης, λειτουργικό ή κάτι άλλο. Το κείμενο είναι ανώνυμο 100%.
 				<br>
-				Δεν βάζουμε cookies.
+				- Δεν κρατάμε nginx/apache/sql logs στον server.
 				<br>
-				Το "κλειδί" που θα βρεις στο κάτω μέρος μόλις αποθηκεύσεις το κείμενο είναι <b>μόνο</b> για να μπορείς να το βρεις στο μέλλον. 
+				- Δεν βάζουμε cookies.
+				<br>
+				- Το "κλειδί" που θα βρεις στο κάτω μέρος μόλις αποθηκεύσεις το κείμενο είναι <b>μόνο</b> για να μπορείς να το βρεις στο μέλλον. 
 			</p>
 			<form action="{{ url('posts:new_post') }}" method="POST">
 				<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" id='csrf'>
@@ -46,15 +48,15 @@
 				    {% endif %}
 				</div> 
 
-				{% if status %}
-					<div class="alert alert-success">Το κείμενο αποθηκεύτηκε</div>
-				{% endif %}
-
-
 				{# <div class="form-group text-left">
 					<textarea class="form-control" rows="3" id="comment" name="text"></textarea>
 				</div> #}
-				<i>Το κείμενο δεν μπορεί να αλλάξει.</i><br>
+				<p>
+					<i>
+						Aποδέχομαι τους όρους χρήσης
+					</i>
+					<input type="checkbox" name="terms" required="True"> 
+				</p>
 				<button type="submit" class="btn btn-primary">Αποθήκευση</button>
 			</form>
 		</div>
