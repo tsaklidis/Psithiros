@@ -1,0 +1,18 @@
+h2{
+	font-size: 16px;
+	display: inline;
+	margin: 0px;
+	padding: 0px;
+}
+#anon{font-size: 15px;}
+.post_wrp{
+	text-align: left;
+	padding: 10px;
+	margin: 5px;
+	background-color: #626f7b;
+	font-size: 15px;
+	border-radius: 4px;
+}
+.post_head{border-bottom: 1px dotted #999; font-size: 16px; }
+.show{margin-top: 20px;}
+.uuid, .date{float: right; }

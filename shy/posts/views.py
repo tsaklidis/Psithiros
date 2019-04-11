@@ -1,6 +1,19 @@
-import shy.posts.forms as forms
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views.decorators.http import require_POST
+
+import re
+import shy.posts.forms as forms
+
 from shy.posts.models import Post
+
+
+def _clean_search_post(data):
+    """Ensure data is valid."""
+    if data:
+        if not re.match(r'(^[\w\s.]+$)', data, re.UNICODE):
+            return None
+        return data
+    return None
 
 
 def home(request):
@@ -11,6 +24,10 @@ def home(request):
     }
 
     return render(request, 'public/home.html', data)
+
+
+def info(request):
+    return render(request, 'public/info.html')
 
 
 def single_post(request, uuid=None):
@@ -56,3 +73,25 @@ def new_post(request):
     }
 
     return render(request, 'public/new_post.html', data)
+
+
+@require_POST
+def search(request):
+    value = _clean_search_post(request.POST.get('search_term'))
+    if value:
+        try:
+            post = Post.objects.get(uuid=value)
+            return redirect('posts:single_post', post.uuid)
+        except Post.DoesNotExist:
+            posts = Post.objects.filter(text__icontains=value)
+
+        data = {
+            "posts": posts
+        }
+
+        return render(request, 'public/search_results.html', data)
+    else:
+        data = {
+            "posts": ''
+        }
+        return render(request, 'public/search_results.html', data)

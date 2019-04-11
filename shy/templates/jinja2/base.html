@@ -13,6 +13,7 @@
         <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400&amp;subset=greek" rel="stylesheet"> 
         <link href="{{ static('shy/css/base.css') }}" rel="stylesheet" type="text/css">
 
+        <link rel="shortcut icon" type="image/icon" href="{{ static('shy/img/favicon.ico') }}"/>
 
         {% block site_css %}{% endblock %}
         {% block extra_head %}{% endblock%}
@@ -37,7 +38,7 @@
                         <a class="nav-link" href="{{ url('posts:new_post') }}">Γράψε</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Πληροφορίες</a>
+                        <a class="nav-link" href="{{ url('posts:info') }}">Πληροφορίες</a>
                     </li>
                     <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -48,6 +49,11 @@
                         </div>
                     </li> -->
                 </ul>
+                <form class="form-inline my-2 my-lg-0" action="{{ url('posts:search') }}" method="POST">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" id='csrf'>
+                    <input id="search_key" class="form-control mr-sm-2" type="search" placeholder="Ψάξε κλειδί ή κατι άλλο" aria-label="Search" name="search_term">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Δείξε</button>
+                </form>
             </div>
         </nav>
 
@@ -57,8 +63,8 @@
 
         <footer class="footer mt-auto py-3">
             <div class="container">
-                <p class="footer-text text-center">All Rights Reserved &copy;
-                <a href="https://tsaklidis.gr" title="Developer: Stefanos I. Tsaklidis">Developed by Stefanos I. Tsaklidis</a>
+                <p class="footer-text text-center">All Rights Reserved &copy; Developed by 
+                    <a href="https://tsaklidis.gr" title="Developer: Stefanos I. Tsaklidis">Stefanos I. Tsaklidis</a>
                 </p>
             </div>
         </footer>

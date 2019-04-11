@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block page_title %}Αρχική{% endblock %}
+{% block site_css %}
+    <link href="{{ static('shy/css/public/info.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block extra_head %}{% endblock%}
+{% block meta_description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+
+{% block main %}
+<div class="container text-left">
+
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Πληροφορίες και ερωτήσεις</h3>
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading quest">
+                        <h4 class="panel-title">
+                            <div data-toggle="collapse" data-parent="#accordion" href="#why">- Γιατί να γράψω κάτι στον Ψίθυρο;</div>
+                        </h4>
+                    </div>
+                    <div id="why" class="panel-collapse collapse ans">
+                        <div class="panel-body">
+                            Μερικές φορές θέλεις να εκφράσεις κάτι που δεν έχεις πει σε κανέναν, να πάρεις την γνώμη κάποιου αλλά ντρέπεσαι ή δεν ξέρεις πως να το πεις.
+                            <br><br>
+                            Στον Ψίθυρο έχεις <b>100% ανωνυμία</b>. Μπορείς να κάνεις την ερώτησή σου ανώνυμα. Η απάντηση που θα πάρεις θα είναι και αυτή ανώνυμη. Εκτός αν εσύ ή αυτός που σου απαντάει γράψετε κάποια πληροφορία που μπορεί να σας συνδέσει με τα στοιχεία σας.  
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading quest">
+                        <h4 class="panel-title">
+                            <div data-toggle="collapse" data-parent="#accordion" href="#reg">- Τι στοιχεία χρειάζονται για να γράψω;</div>
+                        </h4>
+                    </div>
+                    <div id="reg" class="panel-collapse collapse ans">
+                        <div class="panel-body">
+                            Κανένα. Δεν χρειάζεται να κάνεις εγγραφή. Απλά γράφεις και δημοσιεύεις.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading quest">
+                        <h4 class="panel-title">
+                            <div data-toggle="collapse" data-parent="#accordion" href="#when">- Πότε θα δημοσιευθεί το κείμενό μου;</div>
+                        </h4>
+                    </div>
+                    <div id="when" class="panel-collapse collapse ans">
+                        <div class="panel-body">
+                            Αμέσως, δεν υπάρχει καμία καθυστέρηση, διαλογή ή σειρά.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading quest">
+                        <h4 class="panel-title">
+                            <div data-toggle="collapse" data-parent="#accordion" href="#cookies">- Έχετε cookies;</div>
+                        </h4>
+                    </div>
+                    <div id="cookies" class="panel-collapse collapse ans">
+                        <div class="panel-body">
+                            Όχι. Δεν αποθηκεύουμε τίποτα.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading quest">
+                        <h4 class="panel-title">
+                            <div data-toggle="collapse" data-parent="#accordion" href="#what_s">- Τι στοιχεία αποθηκεύετε;</div>
+                        </h4>
+                    </div>
+                    <div id="what_s" class="panel-collapse collapse ans">
+                        <div class="panel-body">
+                            Πραγματικά δεν αποθηκεύουμε τίποτα! Δεν κρατάμε ΙΡ ούτε κανένα στοιχείο.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading quest">
+                        <h4 class="panel-title">
+                            <div data-toggle="collapse" data-parent="#accordion" href="#stats">- Έχετε google analytics;</div>
+                        </h4>
+                    </div>
+                    <div id="stats" class="panel-collapse collapse ans">
+                        <div class="panel-body">
+                            Όχι δεν έχουμε.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading quest">
+                        <h4 class="panel-title">
+                            <div data-toggle="collapse" data-parent="#accordion" href="#stats_who">- Πώς βλέπετε την επισκεψιμότητα και ποιός μπαίνει στην σελίδα;</div>
+                        </h4>
+                    </div>
+                    <div id="stats_who" class="panel-collapse collapse ans">
+                        <div class="panel-body">
+                            Δεν το βλέπουμε. 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
+{% endblock %}
+{% block site_js %}{% endblock %}
+

@@ -70,7 +70,8 @@
 	{% for ans in post.all_answers() %}
 		<div class="row">
 			<div class="col-md-5">
-				<div class="ans_wrp" id="{{post.uuid}}">
+				<div class="ans_wrp">
+					<a id="{{ans.uuid}}" href="{{ans.uuid}}"></a>
 					<div class="post_head ">
 						<span class="title">
 							<h2>{{ans.title}}.</h2>

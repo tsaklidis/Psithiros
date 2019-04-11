@@ -8,6 +8,12 @@ urlpatterns = [
     # Signel post
     url('^post/(?P<uuid>[\w.@+-]+)/$', views.single_post, name='single_post'),
 
+    # search for posts
+    url('^search/$', views.search, name='search'),
+
+    # Info page
+    url('^info/$', views.info, name='info'),
+
     # New post
     url('^new/$', views.new_post, name='new_post'),
 ]
