@@ -53,13 +53,14 @@
 					</div> 
 
 					{% if status %}
-						<div class="alert alert-success">Ή απάντηση αποθηκεύτηκε</div>
+						<div class="alert alert-success">
+							Ή απάντηση αποθηκεύτηκε με κλειδί: <span class="badge badge badge-danger">{{key}}</span>
+						</div>
 					{% endif %}
 
+					<div id="captcha_container" class="g-recaptcha"></div>
+					<script src="https://www.google.com/recaptcha/api.js?onload=loadCaptcha&render=explicit" async defer></script>
 
-					{# <div class="form-group text-left">
-						<textarea class="form-control" rows="3" id="comment" name="text"></textarea>
-					</div> #}
 					<i>Η απάντηση δεν μπορεί να σβηστεί ή να αλλάξει.</i><br>
 					<button type="submit" class="btn btn-primary">Αποθήκευση</button>
 				</form>
@@ -92,7 +93,19 @@
 {% block site_js %}
 
 <script type="text/javascript">
+		var captchaContainer = null;
+		var loadCaptcha = function() {
+		  captchaContainer = grecaptcha.render('captcha_container', {
+		    'sitekey' : '6Lde6J0UAAAAAFH9Vf1-EaTpbpZ1hxUEnBvUD5CG',
+		    'callback' : function(response) {
+		      console.log(response);
+		    }
+		  });
+		};
+		var onloadCallback = function() {
+		    loadCaptcha();
+		};
 
-</script>
+	</script>
 
 {% endblock %}

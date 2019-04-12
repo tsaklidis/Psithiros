@@ -48,9 +48,16 @@
 				    {% endif %}
 				</div> 
 
-				{# <div class="form-group text-left">
-					<textarea class="form-control" rows="3" id="comment" name="text"></textarea>
-				</div> #}
+				<div id="captcha_container" class="g-recaptcha"></div>
+              	<script src="https://www.google.com/recaptcha/api.js?onload=loadCaptcha&render=explicit" async defer></script>
+
+              	{% if robot %}
+              	<br>
+              	    <div class="alert alert-danger">
+              	        Λάθος captcha!
+              	    </div>
+              	{% endif %}
+				
 				<p>
 					<i>
 						Aποδέχομαι τους <a id="terms_link" href="{{ url('posts:terms') }}">όρους χρήσης</a>
@@ -69,11 +76,26 @@
 </div>
 {% endblock %}
 {% block site_js %}
+	<script type="text/javascript">
+		var captchaContainer = null;
+		var loadCaptcha = function() {
+		  captchaContainer = grecaptcha.render('captcha_container', {
+		    'sitekey' : '6Lde6J0UAAAAAFH9Vf1-EaTpbpZ1hxUEnBvUD5CG',
+		    'callback' : function(response) {
+		      console.log(response);
+		    }
+		  });
+		};
+		var onloadCallback = function() {
+		    loadCaptcha();
+		};
 
-<script type="text/javascript">
-$(document).ready(function() {
-	$('#id_text').attr('rows', '7');
-});
-</script>
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#id_text').attr('rows', '7');
+		});
+	</script>
 
 {% endblock %}

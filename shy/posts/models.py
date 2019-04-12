@@ -29,7 +29,7 @@ class Post(models.Model):
 
 class Answers(models.Model):
 
-    parent = models.ForeignKey(Post, blank=False, on_delete=models.PROTECT)
+    parent = models.ForeignKey(Post, blank=False, on_delete=models.CASCADE)
 
     text = models.TextField(default='', blank=True,
                             verbose_name=_(u'text'))

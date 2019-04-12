@@ -17,3 +17,8 @@ h2{
 .post_head{border-bottom: 1px dotted #999; font-size: 16px; }
 .show{margin-top: 20px;}
 .uuid, .date{float: right; }
+
+.pagination{
+	margin: 20px auto;
+	display: inline-flex;
+}
