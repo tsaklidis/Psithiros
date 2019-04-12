@@ -25,7 +25,7 @@
 				<br>
 				- Δεν βάζουμε cookies.
 				<br>
-				- Το "κλειδί" που θα βρεις στο κάτω μέρος μόλις αποθηκεύσεις το κείμενο είναι <b>μόνο</b> για να μπορείς να το βρεις στο μέλλον. 
+				- Το "κλειδί" που θα βρεις στο κάτω μέρος μόλις αποθηκεύσεις το κείμενο είναι <u>μόνο</u> για να μπορείς να το βρεις στο μέλλον. 
 			</p>
 			<form action="{{ url('posts:new_post') }}" method="POST">
 				<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" id='csrf'>
@@ -53,7 +53,7 @@
 				</div> #}
 				<p>
 					<i>
-						Aποδέχομαι τους όρους χρήσης
+						Aποδέχομαι τους <a id="terms_link" href="{{ url('posts:terms') }}">όρους χρήσης</a>
 					</i>
 					<input type="checkbox" name="terms" required="True"> 
 				</p>

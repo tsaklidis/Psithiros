@@ -1,3 +1,4 @@
 body{font-family: 'IBM Plex Sans', sans-serif !important;}
 .btn{border-radius: 2px;}
 .btn:hover{cursor: pointer;}
+.no_hover:hover{text-decoration:none;}

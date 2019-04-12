@@ -30,6 +30,14 @@ def info(request):
     return render(request, 'public/info.html')
 
 
+def terms(request):
+    return render(request, 'public/terms.html')
+
+
+def privacy(request):
+    return render(request, 'public/privacy.html')
+
+
 def single_post(request, uuid=None):
     status = False
     if uuid:
