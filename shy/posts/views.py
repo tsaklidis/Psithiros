@@ -5,7 +5,8 @@ from django.conf import settings
 
 import re
 import json
-import urllib
+# import urllib
+import urllib.request
 
 import shy.posts.forms as forms
 
