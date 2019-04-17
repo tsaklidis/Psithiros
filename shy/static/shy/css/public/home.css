@@ -22,3 +22,7 @@ h2{
 	margin: 20px auto;
 	display: inline-flex;
 }
+@media only screen and (max-width : 480px) {
+  .post, .ans_col{padding: 0px;}
+  .date { float: none;}
+}
