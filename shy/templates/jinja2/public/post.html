@@ -17,9 +17,9 @@
 		<div class="col-md-7 post">
 			<div class="post_wrp">
 				<div class="post_head ">
-					<span class="title">
+					<a class="title" href="{{ url('posts:single_post', args=[post.uuid]) }}">
 						<h2>{{post.title}}.</h2>
-					</span>
+					</a>
 				</div>
 				<div class="the_text">{{post.text}}</div>
 				<div class="post_foot">
@@ -29,6 +29,7 @@
 			</div>
 		</div>
 		<div class="col-md-5">
+			<p id="ans_mob" class="btn btn-primary">Απάντησε</p>
 			<div id="give_answr_wrp">
 				<form action="{{ url('posts:single_post', args=[post.uuid]) }}" method="POST">
 					<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" id='csrf'>
@@ -70,7 +71,7 @@
 
 	{% for ans in post.all_answers() %}
 		<div class="row">
-			<div class="col-md-5">
+			<div class="col-md-5 ans_col">
 				<div class="ans_wrp">
 					<a id="{{ans.uuid}}" href="{{ans.uuid}}"></a>
 					<div class="post_head ">
@@ -93,19 +94,49 @@
 {% block site_js %}
 
 <script type="text/javascript">
-		var captchaContainer = null;
-		var loadCaptcha = function() {
-		  captchaContainer = grecaptcha.render('captcha_container', {
-		    'sitekey' : '6Lde6J0UAAAAAFH9Vf1-EaTpbpZ1hxUEnBvUD5CG',
-		    'callback' : function(response) {
-		      console.log(response);
-		    }
-		  });
-		};
-		var onloadCallback = function() {
-		    loadCaptcha();
-		};
+	var captchaContainer = null;
+	var loadCaptcha = function() {
+	  captchaContainer = grecaptcha.render('captcha_container', {
+	    'sitekey' : '6Lde6J0UAAAAAFH9Vf1-EaTpbpZ1hxUEnBvUD5CG',
+	    'callback' : function(response) {
+	      console.log(response);
+	    }
+	  });
+	};
+	var onloadCallback = function() {
+	    loadCaptcha();
+	};
 
-	</script>
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+
+	  $( '#ans_mob' ).click(function() {
+	  	$('#give_answr_wrp').toggle();
+	  });
+
+	  if ($(window).width() <= 600){  
+	    $('#ans_mob').css({"display":"block"});
+	    $('#give_answr_wrp').css({"display":"none"});
+	  }
+	});
+
+	$(window).resize(function(){
+	  if ($(window).width() >= 600){  
+	    $('#ans_mob').css({"display":"none"});
+	    $('#give_answr_wrp').css({"display":"block"});
+	  }
+	  if ($(window).width() <= 600){  
+	    $('#ans_mob').css({"display":"block"});
+	    $('#give_answr_wrp').css({"display":"none"});
+	  }
+	});
+
+
+
+
+
+</script>
 
 {% endblock %}

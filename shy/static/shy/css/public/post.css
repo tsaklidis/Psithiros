@@ -39,6 +39,16 @@ h2{
 	font-size: 15px;
 	border-radius: 4px;
 }
-form{margin: 0px;}
 #id_text, #id_title{border-radius: 2px;}
+.title, .title:hover{color: inherit; text-decoration: none;}
+form{margin: 0px;}
 ul{margin:0px; list-style: none;}
+
+#ans_mob{display: none; max-width: 180px; margin: 0px auto;}
+.show_ans{display: block;}
+.hide_ans{display: none;}
+
+@media only screen and (max-width : 480px) {
+	.post, .ans_col{padding: 0px;}
+	.date { float: none;}
+}
