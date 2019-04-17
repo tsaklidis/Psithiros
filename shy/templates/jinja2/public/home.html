@@ -31,7 +31,12 @@
 						<span class="title">
 							<h2>{{post.title[:20]}}.</h2>
 						</span>
-						<span class="date badge badge-success">Απ:{{post.all_answers('count')}}</span>
+						{% if post.all_answers('count') > 0 %}
+							<span class="date badge badge-success">Απ:{{post.all_answers('count')}}</span>
+						{% else %}
+							<span class="date badge badge-info">Απ:{{post.all_answers('count')}}</span>
+						{% endif %}
+
 						<span class="date badge badge-primary">{{post.created_on.strftime('%d/%m/%Y')}}</span>
 					</div>
 					<div class="the_text">{{post.text[:300]}}...</div>
