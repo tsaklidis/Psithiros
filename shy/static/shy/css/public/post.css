@@ -44,7 +44,7 @@ h2{
 form{margin: 0px;}
 ul{margin:0px; list-style: none;}
 
-#ans_mob{display: none; max-width: 180px; margin: 0px auto;}
+#ans_mob{display: none; max-width: 180px; margin: 5px auto;}
 .show_ans{display: block;}
 .hide_ans{display: none;}
 

@@ -2,7 +2,7 @@
 
 {% block page_title %}Κείμενο{% endblock %}
 {% block site_css %}
-    <link href="{{ static('shy/css/public/post.css') }}?ver=2.0" rel="stylesheet" type="text/css">
+    <link href="{{ static('shy/css/public/post.css') }}?ver=2.1" rel="stylesheet" type="text/css">
 {% endblock %}
 {% block extra_head %}{% endblock%}
 {% block meta_description %}{% endblock %}
@@ -29,7 +29,8 @@
 			</div>
 		</div>
 		<div class="col-md-5">
-			<p id="ans_mob" class="btn btn-primary">Απάντησε</p>
+			<button id="ans_mob" class="btn btn-primary" data-toggle="collapse" data-target="#give_answr_wrp">Απάντησε</button>
+
 			<div id="give_answr_wrp">
 				<form action="{{ url('posts:single_post', args=[post.uuid]) }}" method="POST">
 					<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" id='csrf'>
@@ -112,24 +113,24 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 
-	  $( '#ans_mob' ).click(function() {
-	  	$('#give_answr_wrp').toggle();
-	  });
+	  // $( '#ans_mob' ).click(function() {
+	  // 	$('#give_answr_wrp').toggle();
+	  // });
 
 	  if ($(window).width() <= 600){  
 	    $('#ans_mob').css({"display":"block"});
-	    $('#give_answr_wrp').css({"display":"none"});
+	    $('#give_answr_wrp').addClass("collapse");
 	  }
 	});
 
 	$(window).resize(function(){
 	  if ($(window).width() >= 600){  
 	    $('#ans_mob').css({"display":"none"});
-	    $('#give_answr_wrp').css({"display":"block"});
+	    $('#give_answr_wrp').removeClass("collapse");
 	  }
 	  if ($(window).width() <= 600){  
 	    $('#ans_mob').css({"display":"block"});
-	    $('#give_answr_wrp').css({"display":"none"});
+	    $('#give_answr_wrp').addClass("collapse");
 	  }
 	});
 
