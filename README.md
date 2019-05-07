@@ -1,13 +1,13 @@
 <h4>Psithiros</h4>
 
-![](screens/l.png)
+![](shy/screens/l.png)
 
 <h5>This platform allows anonymous posting.</h5>
 <h5>Make questions, create threads, answer questions and always 100% anonymously</h5>
 
-![](screens/2.png)
+![](shy/screens/2.png)
 
-![](screens/3.png)
+![](shy/screens/3.png)
 
 <p>Some Functionalities are:</p>
 <ul>
